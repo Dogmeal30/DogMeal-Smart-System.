@@ -1,29 +1,40 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 import json
+import random
 
-app = FastAPI(title="DOGMEAL Smart System API")
+app = FastAPI(title="DOGMEAL Global Hub")
 
-# მონაცემების ჩატვირთვა ჩვენი ფაილებიდან
-def load_data(file_name):
-with open(file_name, 'r', encoding='utf-8') as f:
+# ყველა მონაცემის ჩატვირთვა
+def get_db(file):
+with open(file, 'r', encoding='utf-8') as f:
 return json.load(f)
 
 @app.get("/")
-async def root():
-return {"message": "DOGMEAL სისტემა აქტიურია და მზად არის მუშაობისთვის!"}
+async def status():
+return {"status": "DOGMEAL Online", "version": "1.0.2", "owner": "Begheli"}
 
-@app.get("/check-travel/{country}")
-async def check_travel(country: str):
-data = load_data('travel_standards.json')
-return data['standards'].get(country.upper(), "ინფორმაცია ამ ქვეყანაზე მალე დაემატება.")
+# კვების კალკულატორი
+@app.get("/calc-feed")
+async def calc(weight: float, activity: int):
+# ფორმულა: წონა * 25გრ + აქტივობის კოეფიციენტი
+portion = (weight * 25) * (1 + (activity * 0.1))
+return {"portion_grams": round(portion, 0), "message": "DOGMEAL-ის ოპტიმალური დოზა"}
 
-@app.get("/get-symptom/{lang}/{query}")
-async def get_symptom(lang: str, query: str):
-data = load_data('dogmeal_encyclopedia.json')
-result = data['encyclopedia'].get(lang, {}).get('symptoms', {}).get(query)
-return {"recommendation": result or "გთხოვთ, მიმართოთ ვეტერინარს ზუსტი დიაგნოზისთვის."}
+# ინტელექტუალური სიმპტომების ძებნა
+@app.get("/check-symptom/{query}")
+async def check(query: str):
+db = get_db('dogmeal_intelligence.json')
+result = db['symptoms_catalog'].get(query, "ინფორმაცია ვერ მოიძებნა. დაუკავშირდით ვეტერინარს.")
+return {"info": result}
 
-@app.post("/activate-sos/{pet_id}")
-async def activate_sos(pet_id: str):
-# აქედან იგზავნება შეტყობინება პატრონთან
-return {"status": "SOS რეჟიმი ჩაირთო!", "pet_id": pet_id}
+# სახალისო ფოტო-მესიჯის გენერატორი
+@app.get("/daily-fun")
+async def fun():
+messages = [
+"ნახე, როგორ ველოდები შენს მოსვლას! 🐾",
+"დღეს ძალიან კარგი ბიჭი ვიყავი! 🦴",
+"უკვე ჭამის დროა, არ დაგავიწყდეს! 🍽️"
+]
+return {"message": random.choice(messages)}
+
+

@@ -1,0 +1,21 @@
+# DOGMEAL SOS Recovery Module
+# This code handles QR scan events and owner notifications
+
+def handle_qr_scan(pet_id, scanner_location):
+"""
+როცა ვინმე დაასკანერებს ძაღლის QR კოდს:
+1. აპლიკაცია იღებს სკანერის GPS კოორდინატებს.
+2. უგზავნის Push-შეტყობინებას პატრონს.
+3. პატრონს უჩვენებს რუკას Google Maps-ში.
+"""
+message = f"DOGMEAL განგაში! თქვენი მეგობარი (ID: {pet_id}) იპოვეს."
+maps_link = f"https://www.google.com/maps/search/?api=1&query={scanner_location}"
+
+return {
+"notification": message,
+"location_map": maps_link,
+"status": "პატრონს ეცნობა!"
+}
+
+# SOS რეჟიმი: აქტიური
+is_sos_active = True

@@ -1,40 +1,23 @@
 from fastapi import FastAPI
 import json
-import random
 
-app = FastAPI(title="DOGMEAL Global Hub")
+app = FastAPI()
 
-# ყველა მონაცემის ჩატვირთვა
-def get_db(file):
-with open(file, 'r', encoding='utf-8') as f:
-return json.load(f)
+# მონაცემების ბაზის ჩატვირთვა
+try:
+with open('medical_data.json', 'r', encoding='utf-8') as f:
+medical_db = json.load(f)
+except Exception:
+medical_db = {}
 
 @app.get("/")
-async def status():
-return {"status": "DOGMEAL Online", "version": "1.0.2", "owner": "Begheli"}
+async def root():
+return {"message": "DOGMEAL System is Online"}
 
-# კვების კალკულატორი
-@app.get("/calc-feed")
-async def calc(weight: float, activity: int):
-# ფორმულა: წონა * 25გრ + აქტივობის კოეფიციენტი
-portion = (weight * 25) * (1 + (activity * 0.1))
-return {"portion_grams": round(portion, 0), "message": "DOGMEAL-ის ოპტიმალური დოზა"}
+@app.get("/search_symptom/{query}")
+async def search(query: str, lang: str = "ka"):
+result = medical_db.get(lang, {}).get(query, "ინფორმაცია ვერ მოიძებნა.")
+return {"response": result}
 
-# ინტელექტუალური სიმპტომების ძებნა
-@app.get("/check-symptom/{query}")
-async def check(query: str):
-db = get_db('dogmeal_intelligence.json')
-result = db['symptoms_catalog'].get(query, "ინფორმაცია ვერ მოიძებნა. დაუკავშირდით ვეტერინარს.")
-return {"info": result}
-
-# სახალისო ფოტო-მესიჯის გენერატორი
-@app.get("/daily-fun")
-async def fun():
-messages = [
-"ნახე, როგორ ველოდები შენს მოსვლას! 🐾",
-"დღეს ძალიან კარგი ბიჭი ვიყავი! 🦴",
-"უკვე ჭამის დროა, არ დაგავიწყდეს! 🍽️"
-]
-return {"message": random.choice(messages)}
 
 

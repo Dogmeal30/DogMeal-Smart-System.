@@ -1,0 +1,22 @@
+"project": "DogMeal Smart System",
+"brand": "DogMeal",
+"module": "International Travel Health Standards",
+"standards": {
+"EU": {
+"microchip": "ISO 11784/11785 compliant",
+"rabies_vaccination": "Minimum 21 days before travel",
+"titer_test": "3 months waiting period required for some entries",
+"tapeworm_treatment": "24-120 hours before entry"
+},
+"USA": {
+"rabies_certificate": "CDC requirements",
+"screwworm_inspection": "Required for specific regions"
+}
+},
+"features": [
+"QR Verification",
+"Cloud Backup",
+"SOS Recovery",
+"Digital Airport Passport"
+]
+}

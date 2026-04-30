@@ -10,4 +10,3 @@ return {"status": "DOGMEAL Online", "message": "სისტემა მზა�
 def test():
 return {"health": "ok"}
 
-

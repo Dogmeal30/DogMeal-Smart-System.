@@ -1,0 +1,28 @@
+{
+"project": "DogMeal Smart System",
+"data_storage": "16GB External SD Required",
+"languages": ["ka", "en", "de", "it", "ru", "am", "az"],
+"encyclopedia": {
+"ka": {
+"symptoms": {
+"ქავილი": "შესაძლოა ალერგია. შეამოწმეთ ბალახი ან ახალი საკვები.",
+"კოჭლობა": "შეზღუდეთ მოძრაობა და მიმართეთ ვეტერინარს რენტგენისთვის."
+},
+"breeds": {
+"გერმანული ნაგაზი": "საჭიროებს სახსრების დაცვას და აქტიურ ვარჯიშს."
+}
+},
+"en": {
+"symptoms": {
+"itching": "Possible allergy. Check environment or new food.",
+"limping": "Restrict movement and consult a vet for X-ray."
+}
+},
+"de": {
+"symptoms": {
+"Juckreiz": "Mögliche Allergie. Umwelt oder Futter prüfen.",
+"Hinken": "Bewegung einschränken und Tierarzt aufsuchen."
+}
+}
+}
+}

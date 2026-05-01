@@ -1,0 +1,29 @@
+{
+"app_version": "1.0.0",
+"brand_colors": {
+"primary": "#1A1A1A",
+"secondary": "#2ECC71",
+"background": "#121212"
+},
+"hidden_features": {
+"international_travel": {
+"status": "locked",
+"required_docs": ["EU Pet Passport", "Rabies Titer Test", "Microchip"],
+"security": "blockchain_verification_ready"
+},
+"achievements_hall_of_fame": {
+"status": "locked",
+"categories": ["Show", "Hunting", "Sports"],
+"titles": ["CAC", "CACIB", "BIS"]
+},
+"qr_ecosystem": {
+"status": "active_backend",
+"targets": ["Beghari_Furniture", "Hunting_Box", "Digital_ID"]
+}
+},
+"active_features": {
+"nutrition_logic": true,
+"sleep_tracker": true,
+"health_symptoms_ai": true
+}
+}

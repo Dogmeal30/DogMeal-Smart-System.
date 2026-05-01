@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogMeal Pro System</title>
+    <style>
+        body { background-color: #1a1a1a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .container { background-color: #262626; padding: 2rem; border-radius: 15px; border-top: 5px solid #2ecc71; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 90%; max-width: 400px; text-align: center; }
+        h1 { color: #2ecc71; margin-bottom: 1.5rem; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #444; background: #333; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background-color: #2ecc71; color: #1a1a1a; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        button:hover { background-color: #27ae60; transform: translateY(-2px); }
+        #result { margin-top: 20px; padding: 15px; border-radius: 8px; background: #333; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DogMeal Pro</h1>
+        <p>შეიყვანეთ მონაცემები კვების გეგმისთვის</p>
+        <input type="text" id="breed" placeholder="ძაღლის ჯიში (მაგ: Labrador)">
+        <input type="number" id="weight" placeholder="წონა (კგ)">
+        <button onclick="calculate()">გამოთვლა</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function calculate() {
+            const breed = document.getElementById('breed').value;
+            const weight = document.getElementById('weight').value;
+            const resDiv = document.getElementById('result');
+            
+            resDiv.style.display = 'block';
+            resDiv.innerHTML = 'ითვლება...';
+
+            // აქ სერვერიდან წამოვიღებთ მონაცემებს
+            const response = await fetch(`/breed/${breed}`);
+            const data = await response.json();
+            
+            if(data.error) {
+                resDiv.innerHTML = "ჯიში ვერ მოიძებნა.";
+            } else {
+                const cals = weight * 30 + 70; // ჩვენი ფორმულა
+                resDiv.innerHTML = `<strong>${breed}</strong>-სთვის რეკომენდირებულია დღეში <strong>${Math.round(cals)} კკალ.</strong>`;
+            }
+        }
+    </script>
+</body>
+</html>

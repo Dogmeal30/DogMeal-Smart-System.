@@ -1,28 +1,26 @@
 {
-"project": "DogMeal Smart System",
-"data_storage": "16GB External SD Required",
-"languages": ["ka", "en", "de", "it", "ru", "am", "az"],
-"encyclopedia": {
-"ka": {
-"symptoms": {
-"ქავილი": "შესაძლოა ალერგია. შეამოწმეთ ბალახი ან ახალი საკვები.",
-"კოჭლობა": "შეზღუდეთ მოძრაობა და მიმართეთ ვეტერინარს რენტგენისთვის."
-},
-"breeds": {
-"გერმანული ნაგაზი": "საჭიროებს სახსრების დაცვას და აქტიურ ვარჯიშს."
-}
-},
-"en": {
-"symptoms": {
-"itching": "Possible allergy. Check environment or new food.",
-"limping": "Restrict movement and consult a vet for X-ray."
-}
-},
-"de": {
-"symptoms": {
-"Juckreiz": "Mögliche Allergie. Umwelt oder Futter prüfen.",
-"Hinken": "Bewegung einschränken und Tierarzt aufsuchen."
-}
-}
-}
+  "Labrador": {
+    "ka": {
+      "აღწერა": "აქტიური და მეგობრული ჯიში.",
+      "კვება": "მიდრეკილია სიმსუქნისკენ, აკონტროლეთ პორციები.",
+      "ვარჯიში": "საჭიროებს დიდ ფიზიკურ აქტივობას."
+    },
+    "en": {
+      "description": "Active and friendly breed.",
+      "diet": "Prone to obesity, monitor portions.",
+      "exercise": "Requires high physical activity."
+    }
+  },
+  "German Shepherd": {
+    "ka": {
+      "აღწერა": "ჭკვიანი და ერთგული დამცველი.",
+      "კვება": "საჭიროებს ცილით მდიდარ საკვებს კუნთებისთვის.",
+      "ვარჯიში": "საჭიროებს ინტელექტუალურ და ფიზიკურ დატვირთვას."
+    },
+    "en": {
+      "description": "Intelligent and loyal protector.",
+      "diet": "Needs high-protein food for muscles.",
+      "exercise": "Needs both mental and physical stimulation."
+    }
+  }
 }
